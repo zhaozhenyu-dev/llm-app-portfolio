@@ -34,6 +34,31 @@
 - **项目 3 复用 Day16 Agent 外壳**：Day16 手写的通用 ReAct + function calling 循环一行不重写，只替换工具表（`parse_profile` 解析 JD/简历 + `score_match` 确定性打分），Agent 从玩具升级成求职产品。
 - **确定性打分不幻觉**：`score_match` 用加权公式（技能 0.6 / 经验 0.25 / 学历 0.15）算匹配度，同输入必同输出，把"可能对"变成"一定对"。
 
+## 🏃 本地运行
+
+### 项目 3（JD 匹配助手，day18）
+```bash
+git clone https://github.com/zhaozhenyu-dev/python-20days.git
+cd python-20days
+pip install -r requirements.txt
+export DEEPSEEK_API_KEY="sk-你的key"
+streamlit run day18/app.py
+```
+浏览器打开 http://localhost:8501 ，粘贴 JD + 简历，点「匹配」即可看到匹配报告。
+
+### 用 Docker 跑项目 3（Day19 新增 Dockerfile）
+```bash
+docker build -t jd-match .
+docker run -e DEEPSEEK_API_KEY="sk-你的key" -p 8501:8501 jd-match
+```
+镜像基于 `python:3.11-slim`，仅装 `streamlit` + `requests`，轻量；容器内 Streamlit 监听 `0.0.0.0:8501`。
+
+### 模拟面试打分（day19）
+```bash
+python3 day19/interview_coach.py --selftest   # 自测：内置 JD + 假回答跑通出题→打分
+python3 day19/interview_coach.py              # 交互：输入 JD → 逐题回答 → 看评分
+```
+
 ## 📌 备注
 
 仓库为学习实践产物，代码按天归档；三个在线 Demo 均可直接访问体验。
