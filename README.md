@@ -28,6 +28,7 @@
 - `day16`：Agent 与工具调用入门——手写 ReAct + function calling（calculator 安全 eval + get_weather Open-Meteo 中文适配），理解"大模型只是 Agent 的脑"
 - `day17`：项目 3 架构设计——把 Day16 通用 Agent 外壳当"万能插座"，设计两个求职工具
 - `day18`：JD 匹配助手（项目 3）MVP——复用 Day16 外壳 + 插 `parse_profile` / `score_match` 两工具，Streamlit Cloud 部署上线
+- `day19`：工程化收尾——项目 3 `Dockerfile`（python:3.11-slim 分层构建）+ 模拟面试打分脚本 `interview_coach.py`（出题→答题→逐题评分）+ CI 新增 Docker 构建与探活校验
 
 ## ✨ 项目亮点
 
