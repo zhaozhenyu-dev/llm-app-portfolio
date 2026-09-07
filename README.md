@@ -11,7 +11,7 @@
 | 项目 | 说明 | 链接 |
 |------|------|------|
 | **AI 周报助手** | 把手写流水账一键转成格式规范、重点突出的周报 | [打开 Demo](https://llm-app-portfolio-fgcfrtkcnslqpa2mnpvgfy.streamlit.app) |
-| **RAG 求职资料助手** | 用中文语义向量检索私有资料，让大模型「只依据资料作答」并标注 `[编号]` 出处，缓解幻觉 | [打开 Demo](https://llm-app-portfolio-sdya3nmbqzg6rglk9b2nmq.streamlit.app) |
+| **RAG 求职资料助手** | 用中文语义向量检索私有资料，让大模型「只依据资料作答」并标注 `[编号]` 出处，缓解幻觉；检索评估最优命中 10/10（10 道测试题 × 6 组 chunk/top-k 参数对比） | [打开 Demo](https://llm-app-portfolio-sdya3nmbqzg6rglk9b2nmq.streamlit.app) |
 | **JD 匹配助手** | 基于 Agent（ReAct + function calling）自动解析 JD 与简历，用确定性算法算匹配度并给出提升建议 | [打开 Demo](https://llm-app-portfolio-n7tdupvpwauyydgtvbjrar.streamlit.app) |
 
 ## 🛠 技术栈
@@ -33,6 +33,7 @@
 - **纯逻辑与界面解耦**：`rag_lib.py` 不依赖 Web 框架，核心 RAG 逻辑可独立测试、可复用。
 - **测试与 CI**：编写 pytest 单元测试（用 mock 拦截外部 API），并配置 GitHub Actions，每次提交自动跑测试 + Docker 镜像构建校验（单元测试 + 容器化双重保障）。
 - **可溯源答案**：约束大模型「仅依据检索资料作答 + 用 `[编号]` 标注来源」，答案可溯源、缓解幻觉。
+- **检索效果可量化**：用 10 道测试题 × 6 组 chunk/top-k 参数对比评估检索效果，最优命中 10/10 并记录调优依据，避免「凭感觉调参」。
 - **项目 3 复用通用 Agent 外壳**：手写的通用 ReAct + function calling 循环一行不重写，只替换工具表（`parse_profile` 解析 JD/简历 + `score_match` 确定性打分），体现清晰的工程抽象与模块复用能力。
 - **确定性打分不幻觉**：`score_match` 用加权公式（技能 0.6 / 经验 0.25 / 学历 0.15）算匹配度，同输入必同输出，把"可能对"变成"一定对"。
 
