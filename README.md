@@ -22,7 +22,7 @@
 
 - `day1` ~ `day5`：Python 基础语法、列表/字典、函数、异常处理 + 文件读写 + JSON、类与对象
 - `day6` ~ `day9`：requests + HTTP API、DeepSeek API 调用、简历润色智能体、面试问答智能体
-- `day10`：AI 周报助手 MVP（项目 1）+ Git 进阶 + Streamlit Cloud 部署 + pytest 测试
+- `day9` ~ `day10`：AI 周报助手 MVP（项目 1，代码在 `day9/`）+ Git 进阶 + Streamlit Cloud 部署 + pytest 测试
 - `day11` ~ `day13`：RAG 原理、语义向量 / TF-IDF 对比、LangChain + FAISS 实战
 - `day14`：RAG 求职资料助手（项目 2）+ 语义为主 / TF-IDF 兜底降级 + pytest + GitHub Actions CI + Streamlit Cloud 部署
 - `day16`：Agent 与工具调用入门——手写 ReAct + function calling（calculator 安全 eval + get_weather Open-Meteo 中文适配），理解"大模型只是 Agent 的脑"
