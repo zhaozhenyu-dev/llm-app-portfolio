@@ -2,6 +2,10 @@
 
 赵振宇的「AI 应用岗 近期集中开发」代码仓库 —— 从 Python 入门，到做出 3 个可在线演示的 AI 应用项目。
 
+[![CI](https://github.com/zhaozhenyu-dev/python-20days/actions/workflows/ci.yml/badge.svg)](https://github.com/zhaozhenyu-dev/python-20days/actions/workflows/ci.yml)
+
+> CI 每次提交自动执行两项校验：① `pytest` 单元测试（mock 拦截外部 API）；② Docker 镜像构建校验（项目 3），确保 `Dockerfile` 始终可构建。
+
 ## 🚀 在线 Demo
 
 | 项目 | 说明 | 链接 |
@@ -12,7 +16,7 @@
 
 ## 🛠 技术栈
 
-`Python` · `Agent (ReAct + function calling)` · `DeepSeek API (OpenAI 兼容)` · `LangChain` · `FastEmbed (bge-small-zh-v1.5)` · `FAISS` · `Streamlit` · `pytest` · `GitHub Actions (CI)`
+`Python` · `Agent (ReAct + function calling)` · `DeepSeek API (OpenAI 兼容)` · `LangChain` · `FastEmbed (bge-small-zh-v1.5)` · `FAISS` · `Streamlit` · `pytest` · `GitHub Actions (CI)` · `Docker`
 
 ## 📂 学习路线与目录
 
@@ -29,7 +33,7 @@
 
 - **项目 2 采用「语义为主、TF-IDF 兜底」降级链路**：语义检索依赖异常时自动切换，保障问答服务不中断。
 - **纯逻辑与界面解耦**：`rag_lib.py` 不依赖 Web 框架，核心 RAG 逻辑可独立测试、可复用。
-- **测试与 CI**：编写 pytest 单元测试（用 mock 拦截外部 API），并配置 GitHub Actions，每次提交自动跑测试。
+- **测试与 CI**：编写 pytest 单元测试（用 mock 拦截外部 API），并配置 GitHub Actions，每次提交自动跑测试 + Docker 镜像构建校验（单元测试 + 容器化双重保障）。
 - **可溯源答案**：约束大模型「仅依据检索资料作答 + 用 `[编号]` 标注来源」，答案可溯源、缓解幻觉。
 - **项目 3 复用 Day16 Agent 外壳**：Day16 手写的通用 ReAct + function calling 循环一行不重写，只替换工具表（`parse_profile` 解析 JD/简历 + `score_match` 确定性打分），Agent 从玩具升级成求职产品。
 - **确定性打分不幻觉**：`score_match` 用加权公式（技能 0.6 / 经验 0.25 / 学历 0.15）算匹配度，同输入必同输出，把"可能对"变成"一定对"。
