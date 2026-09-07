@@ -10,9 +10,9 @@
 
 | 项目 | 说明 | 链接 |
 |------|------|------|
-| **AI 周报助手** | 把手写流水账一键转成格式规范、重点突出的周报 | [打开 Demo](https://python-20days-dcxzqfevfgkkkvqfevfgkkqvapxmvjuz.streamlit.app) |
-| **RAG 求职资料助手** | 用中文语义向量检索私有资料，让大模型「只依据资料作答」并标注 `[编号]` 出处，缓解幻觉 | [打开 Demo](https://python-20days-p3gwguohddqctexdntivccy.streamlit.app) |
-| **JD 匹配助手** | 基于 Agent（ReAct + function calling）自动解析 JD 与简历，用确定性算法算匹配度并给出提升建议 | [打开 Demo](https://python-20days-cj6vyfw4oseypfg9ppwepz.streamlit.app) |
+| **AI 周报助手** | 把手写流水账一键转成格式规范、重点突出的周报 | [打开 Demo](https://llm-app-portfolio-fgcfrtkcnslqpa2mnpvgfy.streamlit.app) |
+| **RAG 求职资料助手** | 用中文语义向量检索私有资料，让大模型「只依据资料作答」并标注 `[编号]` 出处，缓解幻觉 | [打开 Demo](https://llm-app-portfolio-sdya3nmbqzg6rglk9b2nmq.streamlit.app) |
+| **JD 匹配助手** | 基于 Agent（ReAct + function calling）自动解析 JD 与简历，用确定性算法算匹配度并给出提升建议 | [打开 Demo](https://llm-app-portfolio-n7tdupvpwauyydgtvbjrar.streamlit.app) |
 
 ## 🛠 技术栈
 
