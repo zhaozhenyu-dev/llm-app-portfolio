@@ -30,8 +30,8 @@ def get_api_key():
 
 
 def main():
-    st.set_page_config(page_title="项目2 · RAG 求职资料助手", page_icon="📚")
-    st.title("📚 项目 2：RAG 求职资料助手")
+    st.set_page_config(page_title="RAG 求职资料助手", page_icon="📚")
+    st.title("📚 RAG 求职资料助手")
     st.caption("基于你的课程资料问答，答案带 [编号] 出处 ｜ 语义向量检索(主) + TF-IDF(兜底)")
 
     text = load_knowledge()
@@ -64,7 +64,7 @@ def main():
                 st.write(c)
 
     st.divider()
-    st.caption("赵振宇 · RAG 资料问答 ｜ 技术栈：fastembed(bge-small-zh) + FAISS + DeepSeek(OpenAI 兼容)")
+    st.caption("RAG 资料问答 ｜ 技术栈：fastembed(bge-small-zh) + FAISS + DeepSeek(OpenAI 兼容)")
 
 
 if __name__ == "__main__":

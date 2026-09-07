@@ -18,7 +18,7 @@ from jd_match_agent import run_agent, parse_profile  # noqa: E402
 
 st.set_page_config(page_title="AI 求职助手 · JD 匹配", page_icon="🎯")
 st.title("🎯 AI 求职助手 · JD 匹配")
-st.caption("项目 3（Day18 MVP）· 复用 Day16 Agent 外壳 + 求职工具插头")
+st.caption("Agent + function calling ｜ 复用通用 Agent 外壳 + 求职工具插头")
 
 jd = st.text_area("岗位 JD", height=180, placeholder="粘贴岗位描述全文…")
 resume = st.text_area("你的简历", height=180, placeholder="粘贴你的简历全文…")
