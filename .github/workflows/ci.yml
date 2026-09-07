@@ -20,3 +20,15 @@ jobs:
 
       - name: Run project 2 (RAG) tests
         run: pytest day14/test_rag.py -q
+
+  # 云端校验项目 3 的 Dockerfile 能真的构建成功（用 GitHub 免费服务器，本机不用装 Docker）
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t jd-match:ci .
+
+      - name: Check image exists
+        run: docker images jd-match:ci
