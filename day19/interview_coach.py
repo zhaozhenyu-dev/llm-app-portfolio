@@ -132,6 +132,31 @@ def _selftest():
     print("建议：", result.get("advice", ""))
 
 
+def _read_answer(index, total):
+    """读一道题的回答：支持多行粘贴，单独按回车（空行）表示本题答完。
+
+    为什么不能直接用 input()：
+        input() 一遇到回车就返回，只交出"一行"。候选人如果粘贴一大段带换行的
+        回答，第 1 题只能拿到第一行，剩下的行会被第 2、3 题的 input() 依次吃掉，
+        造成"题与答错位"——模型看到的是碎句子，于是判"完全偏题"给 0 分。
+        改成"循环读行 + 空行收尾"后，一整段回答会完整留在同一题里。
+    """
+    print(f"\n【第 {index}/{total} 题】请回答（可粘贴多行，单独回车结束本题）：")
+    lines = []
+    while True:
+        try:
+            line = input()
+        except EOFError:  # 用管道喂数据时（如 echo ... | python3）读完就结束
+            break
+        if line.strip() == "":  # 空行 = 本题答完
+            break
+        lines.append(line)
+    text = "\n".join(lines).strip()
+    if not text:  # 一个字没答也要留痕迹，方便事后看出是哪题空着
+        print("（本题未作答，将按 0 分处理）")
+    return text
+
+
 def _interactive():
     jd = input("岗位 JD（或粘贴简要要求）：\n")
     qs, err = gen_questions(jd, api_key=os.getenv("DEEPSEEK_API_KEY"))
@@ -142,10 +167,9 @@ def _interactive():
     for i, item in enumerate(qs["questions"], 1):
         print(f"{i}. {item['q']}")
         print("   评分要点：", "；".join(item.get("points", [])))
-    print("\n请依次回答（每行一题）：")
     qa = []
-    for item in qs["questions"]:
-        a = input("你的回答：")
+    for i, item in enumerate(qs["questions"], 1):
+        a = _read_answer(i, len(qs["questions"]))
         qa.append({"q": item["q"], "a": a})
     result, err = score_answer(jd, qa, api_key=os.getenv("DEEPSEEK_API_KEY"))
     if err:
