@@ -22,7 +22,7 @@
 
 - `day9/`：**AI 周报助手**（项目 1）—— Streamlit + DeepSeek API + pytest + 云端部署
 - `day14/`：**RAG 求职资料助手**（项目 2）—— 语义向量检索 / TF-IDF 兜底降级 + pytest + GitHub Actions CI
-- `day16/`：**通用 Agent 外壳** —— 手写 ReAct + function calling 主循环（工具：安全计算器 / 天气查询）
+- `day16/`：**通用 Agent 外壳** —— 封装的 ReAct + function calling Agent 循环（示例工具：安全计算器 / 天气查询）
 - `day18/`：**JD 匹配助手**（项目 3）—— 复用 Agent 外壳 + `parse_profile` / `score_match` 两个工具 + Streamlit 界面
 - `day19/`：**工程化收尾** —— Dockerfile（python:3.11-slim 分层构建）+ 模拟面试打分脚本 `interview_coach.py`
 - 其余 `dayN/` 目录为基础模块与功能验证代码（HTTP/API、文件处理、类与对象等）
@@ -34,7 +34,7 @@
 - **测试与 CI**：编写 pytest 单元测试（用 mock 拦截外部 API），并配置 GitHub Actions，每次提交自动跑测试 + Docker 镜像构建校验（单元测试 + 容器化双重保障）。
 - **可溯源答案**：约束大模型「仅依据检索资料作答 + 用 `[编号]` 标注来源」，答案可溯源、缓解幻觉。
 - **检索效果可量化**：用 10 道测试题 × 6 组 chunk/top-k 参数对比评估检索效果，最优命中 10/10 并记录调优依据，避免「凭感觉调参」。
-- **项目 3 复用通用 Agent 外壳**：手写的通用 ReAct + function calling 循环一行不重写，只替换工具表（`parse_profile` 解析 JD/简历 + `score_match` 确定性打分），体现清晰的工程抽象与模块复用能力。
+- **项目 3 复用通用 Agent 外壳**：同一套 ReAct + function calling 循环复用，只替换工具表（`parse_profile` 解析 JD/简历 + `score_match` 确定性打分），体现工程抽象与模块复用能力。
 - **确定性打分不幻觉**：`score_match` 用加权公式（技能 0.6 / 经验 0.25 / 学历 0.15）算匹配度，同输入必同输出，把"可能对"变成"一定对"。
 
 ## 🏃 本地运行
